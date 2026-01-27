@@ -10,7 +10,6 @@ import {
   BookOpen, 
   GitBranch, 
   Shield,
-  ArrowRight,
   ChevronRight,
   Bot,
   Users,
@@ -28,7 +27,7 @@ import {
 export default function Main() {
   const navigate = useNavigate();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [hoveredCard, setHoveredCard] = useState(null);
+  // const [hoveredCard, setHoveredCard] = useState(null);
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -256,8 +255,8 @@ export default function Main() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                onMouseEnter={() => setHoveredCard(index)}
-                onMouseLeave={() => setHoveredCard(null)}
+                // onMouseEnter={() => setHoveredCard(index)}
+                // onMouseLeave={() => setHoveredCard(null)}
                 className={`group relative p-6 ${feature.color} rounded-xl border shadow-sm hover:shadow-lg transition-all duration-300 hover:translate-y-[-4px]`}
               >
                 <div className="flex flex-col">

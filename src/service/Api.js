@@ -1,4 +1,6 @@
-const API_BASE=process.env.BACKEND_URL;
+const API_BASE = process.env.REACT_APP_BACKEND_URL;
+console.log(API_BASE);
+
 
 /**
  * Main QA service function with searchType parameter

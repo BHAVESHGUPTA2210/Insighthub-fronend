@@ -16,13 +16,10 @@ import {
   Sparkles, 
   ArrowLeft, 
   Loader2, 
-  MessageSquare,
   Copy,
   CheckCheck,
   AlertCircle,
-  Search,
   Globe,
-  FileText,
   Database,
   Moon,
   Sun
@@ -37,7 +34,7 @@ export default function Chat() {
   const [projectKey, setProjectKey] = useState("unknown_project");
   const [copiedMessageId, setCopiedMessageId] = useState(null);
   const [backendStatus, setBackendStatus] = useState("checking");
-  const [projectConfig, setProjectConfig] = useState(null);
+  //const [projectConfig, setProjectConfig] = useState(null);
   const [searchType, setSearchType] = useState("project");
   const [theme, setTheme] = useState("light");
   
@@ -73,7 +70,7 @@ export default function Chat() {
           // Check specific project configuration
           const config = await getProjectConfig(key);
           if (config) {
-            setProjectConfig(config);
+            //setProjectConfig(config);
             console.log(`✅ ${key} configuration:`, {
               hasOpenAI: config.hasOpenAIKey,
               hasSearch: config.hasSearchKey,
