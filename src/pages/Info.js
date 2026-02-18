@@ -64,7 +64,7 @@ export default function Info() {
   const categories = [
     { id: "all", label: "All Features", icon: <Sparkles size={18} /> },
     { id: "ai", label: "AI Capabilities", icon: <Bot size={18} /> },
-    { id: "integration", label: "Integrations", icon: <GitMerge size={18} /> },
+    //{ id: "integration", label: "Integrations", icon: <GitMerge size={18} /> },
     { id: "analytics", label: "Analytics", icon: <BarChart3 size={18} /> },
     { id: "automation", label: "Automation", icon: <Zap size={18} /> },
     // { id: "security", label: "Security", icon: <Shield size={18} /> },
@@ -191,7 +191,7 @@ const features = [
   ];
 
   const stats = [
-    { value: "20+", label: "Integrations", description: "Supported platforms" },
+   // { value: "20+", label: "Integrations", description: "Supported platforms" },
     { value: "99%", label: "Uptime", description: "Service reliability" },
     { value: "90%", label: "Accuracy", description: "Accuracy Rate" },
     { value: "5s", label: "Response Time", description: "Average query speed" },
@@ -275,8 +275,7 @@ const features = [
           </h1>
           
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Discover how InsightsHub transforms your QA and DevOps processes with 
-            AI-powered features designed to boost productivity, ensure quality, and accelerate delivery.
+            Discover how InsightsHub revolutionizes QA, DevOps, and Development workflows with AI-driven capabilities that enhance productivity, strengthen quality, and speed up delivery cycles.
           </p>
         </div>
 

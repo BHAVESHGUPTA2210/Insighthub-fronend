@@ -196,8 +196,7 @@ export default function Main() {
           </h1>
           
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mt-6">
-            One AI assistant to streamline Jira tickets, Confluence pages, and automation knowledge. 
-            Get instant insights and answers for all your QA and DevOps needs.
+            One unified AI assistant to streamline Jira tickets, Confluence documentation, and automation workflows — delivering instant insights for QA, DevOps, and Development teams.
           </p>
         </div>
 
