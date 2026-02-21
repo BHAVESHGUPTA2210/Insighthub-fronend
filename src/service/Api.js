@@ -1,6 +1,19 @@
 const API_BASE = process.env.REACT_APP_BACKEND_URL;
 console.log(API_BASE);
 
+// AbortController for canceling requests
+let currentController = null;
+
+/**
+ * Cancel the current in-progress request
+ */
+export const cancelRequest = () => {
+  if (currentController) {
+    console.log('🛑 Cancelling ongoing request...');
+    currentController.abort();
+    currentController = null;
+  }
+};
 
 /**
  * Main QA service function with searchType parameter
@@ -8,6 +21,13 @@ console.log(API_BASE);
  */
 export const getQAAnswer = async (projectKey, question, searchType = "auto") => {
   console.log('📡 Calling backend API:', { projectKey, question, searchType });
+  
+  // Cancel any existing request
+  cancelRequest();
+  
+  // Create new AbortController for this request
+  currentController = new AbortController();
+  const { signal } = currentController;
   
   // Validate searchType
   const validSearchTypes = ["project", "web", "auto"];
@@ -24,6 +44,7 @@ export const getQAAnswer = async (projectKey, question, searchType = "auto") => 
         question, 
         searchType: finalSearchType 
       }),
+      signal, // Attach abort signal
     });
 
     console.log('📡 Response status:', response.status);
@@ -37,9 +58,21 @@ export const getQAAnswer = async (projectKey, question, searchType = "auto") => 
     const data = await response.json();
     console.log('📡 API response received for project:', projectKey);
     console.log('📡 Search type used:', data.searchType || data.source || finalSearchType);
+    
+    // Clear controller after successful completion
+    currentController = null;
     return data;
     
   } catch (error) {
+    // Clear controller on error
+    currentController = null;
+    
+    // Handle abort error specially
+    if (error.name === 'AbortError' || error.message === 'The user aborted a request.') {
+      console.log('📡 Request was cancelled by user');
+      throw new Error('Request cancelled');
+    }
+    
     console.error("📡 Service Error:", error);
     return { 
       answer: `**⚠️ Connection Error**\n\nError: ${error.message}\n\nProject: ${projectKey}\nSearch Type: ${searchType}\n\nPlease make sure the backend server is running.\n\nStart it with: node server.js`,
